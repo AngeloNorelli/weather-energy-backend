@@ -6,7 +6,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://weather-energy-frontend.onrender.com/"],
+    allow_origins=["*"],
     allow_credentioals=True,
     allow_methods=["GET"],
     allow_headers=["*"]
