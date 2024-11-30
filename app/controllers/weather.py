@@ -11,15 +11,16 @@ def get_weather_forecast(latitude: float = Query(...), longitude: float = Query(
     weather_data = fetch_weather_data(latitude, longitude)
     
     forecast = []
-    for day in range(7):
-        sunshine_hours = weather_data["daily"]["sunshine_hours"][day] / 60
+    
+    for i in range(7):
+        sunshine_hours = weather_data['daily']["sunshine_duration"][i] / 60
         energy = calculate_daily_energy(sunshine_hours)
         
         forecast.append({
-            "date": weather_data["daily"]["time"][day],
-            "weather_code": weather_data["daily"]["weathercode"][day],
-            "temp_min": weather_data["daily"]["temperature_2m_min"][day],
-            "temp_max": weather_data["daily"]["temperature_wm_max"][day],
+            "date": weather_data['daily']["time"][i],
+            "weather_code": weather_data['daily']["weather_code"][i],
+            "temp_min": weather_data['daily']["temperature_2m_min"][i],
+            "temp_max": weather_data['daily']["temperature_2m_max"][i],
             "energy_kwh": energy
         })
     
